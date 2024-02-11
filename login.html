@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <!-- Custom CSS -->
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: rgb(190, 227, 240);
+      background-image: url('im.jpg');
+
+    }
+    .container {
+      max-width: 400px;
+      margin: 100px auto;
+      background-color: azure;
+      box-shadow: 10px 5px 5px gainsboro;
+      border-radius: 20px;
+    }
+    h2{
+      text-align: center;
+      font-weight: 400;
+      text-shadow: 10px 5px 5px gainsboro;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+   
+    <h2 >Healthcare</h2>
+    <form id="loginForm">
+      <div class="form-group">
+        <label for="username">Username:</label>
+        <input type="text" class="form-control" id="username" required>
+      </div>
+      <div class="form-group">
+        <label for="password">Password:</label>
+        <input type="password" class="form-control" id="password" required>
+      </div>
+      <button type="submit" class="btn btn-primary">Login</button>
+      
+    </form>
+    <button style="margin-bottom: 5px;" type="button" class="btn btn-danger mt-3" onclick="triggerEmergency()">Emergency Alarm</button>
+    
+  </div>
+
+  <!-- Bootstrap JS and jQuery -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <!-- Custom JavaScript -->
+  <script>
+    const loginForm = document.getElementById('loginForm');
+
+    loginForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const username = document.getElementById('username').value;
+      const password = document.getElementById('password').value;
+      // Perform authentication (not implemented in this example)
+      // For simplicity, just redirect to index.html upon successful login
+      window.location.href = 'index.html';
+
+      
+    });
+    function triggerEmergency() {
+      // Play alarm sound
+      const audio = new Audio('alarm.mp3'); // Adjust the path to your alarm sound file
+      audio.play();
+      // Show alert message
+      alert("Emergency alarm activated! Help is on the way.");
+    }
+  </script>
+</body>
+</html>

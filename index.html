@@ -1,0 +1,151 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Elderly Healthcare Website</title>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <!-- Custom CSS -->
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-image: url('im1.png');
+    }
+    .container {
+      max-width: 1200px;
+      margin: 50px auto;
+    }
+    .navbar-nav .nav-link {
+      transition: background-color 0.3s;
+      
+    }
+    .navbar-nav .nav-link:hover {
+      background-color: #f8f9fa;
+    }
+    .nav-link{
+      background-color: rgb(168, 194, 195);
+       border-radius: 10px;
+       margin: 8px;
+       color: brown;
+       box-shadow: 10px 5px 5px gainsboro;
+    }
+    
+    
+  </style>
+</head>
+<body>
+  
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+      <a style="color: cadetblue; text-shadow: 0cm; text-decoration: solid ; font-style: normal; font-weight: 800; font-size: 20px;  " class="navbar-brand" href="#">Elderly Healthcare</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="step-tracker.html">Step Tracker</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="diet-plan.html">Diet Plan</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="exercise.html">Exercise</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="find_docter.html">Find a Doctor</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="reminder.html">Reminder</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="water-intake.html">Water Intake</a>
+          </li>
+        </ul>
+        <ul  class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="logout.html">Logout</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  
+    
+    <!-- Step Tracker Content -->
+
+  <!-- Bootstrap JS and jQuery -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <!-- Custom JavaScript -->
+  <script>
+    // DOM Elements
+    const userInfo = document.getElementById('userInfo');
+    const usernameSpan = document.getElementById('username');
+    const loginForm = document.getElementById('loginForm');
+    const logoutBtn = document.getElementById('logoutBtn');
+    const usernameInput = document.getElementById('usernameInput');
+    const passwordInput = document.getElementById('passwordInput');
+    const stepForm = document.getElementById('stepForm');
+
+    // Check if user is logged in
+    const isLoggedIn = () => !!localStorage.getItem('username');
+
+    // Function to show login form and hide user info
+    const showLoginForm = () => {
+      userInfo.style.display = 'none';
+      loginForm.style.display = 'block';
+    };
+
+    // Function to show user info and hide login form
+    const showUserInfo = () => {
+      userInfo.style.display = 'block';
+      loginForm.style.display = 'none';
+      usernameSpan.textContent = localStorage.getItem('username');
+    };
+
+    // Check login status on page load
+    window.onload = () => {
+      if (isLoggedIn()) {
+        showUserInfo();
+      } else {
+        showLoginForm();
+      }
+    };
+
+    // Login function
+    const login = (e) => {
+      e.preventDefault();
+      const username = usernameInput.value;
+      const password = passwordInput.value;
+      // In real scenario, you would perform authentication here
+      // For simplicity, we just store username in localStorage
+      localStorage.setItem('username', username);
+      showUserInfo();
+    };
+
+    // Logout function
+    const logout = () => {
+      localStorage.removeItem('username');
+      showLoginForm();
+    };
+
+    // Step Form Submit
+    stepForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const stepsInput = document.getElementById('stepsInput').value;
+      // Send steps data to server or perform necessary action
+      alert(`Steps updated to: ${stepsInput}`);
+    });
+
+    // Event listeners
+    loginForm.addEventListener('submit', login);
+    logoutBtn.addEventListener('click', logout);
+  </script>
+</body>
+</html>

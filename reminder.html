@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reminder</title>
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<!-- Custom CSS -->
+<style>
+  body {
+    font-family: Arial, sans-serif;
+   background-color: rgb(198, 224, 224);
+  }
+  .container {
+    max-width: 800px;
+    margin: 50px auto;
+  }
+  .reminder {
+    margin-bottom: 20px;
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <h1>Set Reminders</h1>
+  
+  <div id="reminders">
+    <!-- Reminder template -->
+    <div class="reminder-template" style="display: none;">
+      <div class="form-row">
+        <div class="col">
+          <input type="datetime-local" class="form-control datetime-input">
+        </div>
+        <div class="col">
+          <input type="text" class="form-control reason-input" placeholder="Reminder reason">
+        </div>
+        <div class="col-auto">
+          <button class="btn btn-primary add-reminder">Add Reminder</button>
+          <button class="btn btn-danger delete-reminder">Delete Reminder</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <button id="addReminderBtn" class="btn btn-success">Add New Reminder</button>
+</div>
+
+<!-- Alarm sound -->
+<audio id="alarmSound" src="alarm.mp3" preload="auto"></audio>
+
+<!-- Bootstrap JS and jQuery -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<!-- Custom JavaScript -->
+<script>
+  // Function to add new reminder
+  function addReminder() {
+    const reminderTemplate = document.querySelector('.reminder-template');
+    const newReminder = reminderTemplate.cloneNode(true);
+    newReminder.classList.remove('reminder-template');
+    newReminder.style.display = 'block';
+    document.getElementById('reminders').appendChild(newReminder);
+  }
+
+  // Function to delete reminder
+  function deleteReminder(reminder) {
+    reminder.remove();
+  }
+
+  // Function to play alarm sound
+  function playAlarm() {
+    const audio = document.getElementById('alarmSound');
+    audio.play();
+  }
+
+  // Add event listener for adding new reminder button
+  document.getElementById('addReminderBtn').addEventListener('click', addReminder);
+
+  // Add event listeners for each reminder's buttons
+  document.addEventListener('click', function(event) {
+    if (event.target.classList.contains('add-reminder')) {
+      const reminder = event.target.closest('.reminder');
+      addReminder();
+    } else if (event.target.classList.contains('delete-reminder')) {
+      const reminder = event.target.closest('.reminder');
+      deleteReminder(reminder);
+    }
+  });
+
+  // Add event listener for setting alarm sound
+  document.addEventListener('change', function(event) {
+    if (event.target.classList.contains('datetime-input')) {
+      const datetimeInput = event.target;
+      const reminderTime = new Date(datetimeInput.value).getTime();
+      const currentTime = new Date().getTime();
+      const timeDifference = reminderTime - currentTime;
+      if (timeDifference <= 0) {
+        alert('Please select a future date and time.');
+        datetimeInput.value = '';
+        return;
+      }
+      setTimeout(playAlarm, timeDifference);
+    }
+  });
+</script>
+</body>
+</html>

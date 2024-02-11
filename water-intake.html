@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Water Intake</title>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <!-- Custom CSS -->
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-image: url('water.jpg');
+    }
+    .container {
+      max-width: 800px;
+      margin: 50px auto;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1 style="font-weight: 800; text-shadow: 10px 5px 5px gainsboro; color: aliceblue;">Water Intake</h1>
+    <!-- Water Intake Content Goes Here -->
+    <p style="font-weight: 800; color: aliceblue;">Recommendations: Drink at least 8 glasses of water a day.</p>
+    <form id="waterIntakeForm">
+      <div class="form-group">
+        <label style="font-weight: 800; color: aliceblue;" for="waterInput">Today's Water Intake (in glasses):</label>
+        <input type="number" class="form-control" id="waterInput" required>
+      </div>
+      <button type="submit" class="btn btn-primary">Update</button>
+    </form>
+  </div>
+
+  <!-- Bootstrap JS and jQuery -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <!-- Custom JavaScript -->
+  <script>
+    const waterIntakeForm = document.getElementById('waterIntakeForm');
+
+    waterIntakeForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const waterInput = document.getElementById('waterInput').value;
+      // Send water intake data to server or perform necessary action
+      alert(`Water intake updated to: ${waterInput} glasses`);
+    });
+
+    // Reminder Alarm for Drinking Water
+    setInterval(function() {
+      alert("It's time to drink water! Stay hydrated.");
+    }, 60 * 60 * 1000); // 1 hour interval (60 minutes * 60 seconds * 1000 milliseconds)
+  </script>
+</body>
+</html>

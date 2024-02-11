@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Step Tracker</title>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <!-- Custom CSS -->
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: azure;
+    }
+    .container {
+      max-width: 800px;
+      margin: 50px auto;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1 style="text-align: center; text-shadow: 10px 5px 5px gainsboro;">Step Tracker</h1>
+    <!-- Step Tracker Content Goes Here -->
+    <p style="text-align: center;">Recommendations: Walk at least 30 minutes a day.</p>
+    <form id="stepForm">
+      <div class="form-group">
+        <label for="stepsInput">Today's Steps:</label>
+        <input type="number" class="form-control" id="stepsInput" required>
+      </div>
+      <button style="background-color:blue;"  type="submit" class="btn btn-primary">Update</button>
+    </form>
+  </div>
+
+  <!-- Bootstrap JS and jQuery -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <!-- Custom JavaScript -->
+  <script>
+    const stepForm = document.getElementById('stepForm');
+
+    stepForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const stepsInput = document.getElementById('stepsInput').value;
+      // Send steps data to server or perform necessary action
+      alert(`Steps updated to: ${stepsInput}`);
+    });
+  </script>
+</body>
+</html>

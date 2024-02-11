@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Find a Doctor</title>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <!-- Custom CSS -->
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-image: url('docter.png');
+    }
+    .container {
+      max-width: 800px;
+      margin: 50px auto;
+    }
+    .doctor-card {
+      margin-bottom: 20px;
+    }
+    .card-img-top{
+      height: 120px;
+      width: 120px;
+    }
+  </style>
+</head>
+<body>
+  
+  <div class="container">
+    <h1 style="text-align: center; font-weight: bold; box-shadow: 10px 5px 5px gray;">Select Doctor</h1>
+    
+    <div class="row">
+      <!-- Doctor Cards -->
+      <div class="col-md-6">
+        <div class="card doctor-card">
+          <img src="doc.webp" class="card-img-top" alt="Doctor 1">
+          <div class="card-body">
+            <h5 class="card-title">Dr. John Doe</h5>
+            <p class="card-text">Specialty: Cardiologist</p>
+            <p class="card-text">Contact: 123-456-7890</p>
+            <a href="#" class="btn btn-primary book-appointment">Book Appointment</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="card doctor-card">
+          <img src="doc1.jpeg" class="card-img-top" alt="Doctor 1">
+          <div class="card-body">
+            <h5 class="card-title">Dr. arpita dash</h5>
+            <p class="card-text">Specialty: Dietcian</p>
+            <p class="card-text">Contact: 123-456-7890</p>
+            <a href="#" class="btn btn-primary book-appointment">Book Appointment</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="card doctor-card">
+          <img src="doc2.jpeg" class="card-img-top" alt="Doctor 1">
+          <div class="card-body">
+            <h5 class="card-title">Dr. Ahuti dash</h5>
+            <p class="card-text">Specialty: Physiotherapist</p>
+            <p class="card-text">Contact: 123-456-7890</p>
+            <a href="#" class="btn btn-primary book-appointment">Book Appointment</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="card doctor-card">
+          <img src="doc4.jpeg" class="card-img-top" alt="Doctor 1">
+          <div class="card-body">
+            <h5 class="card-title">Dr. John Doe</h5>
+            <p class="card-text">Specialty: Cardiologist</p>
+            <p class="card-text">Contact: 123-456-7890</p>
+            <a href="#" class="btn btn-primary book-appointment">Book Appointment</a>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Add more doctor cards here -->
+      
+    </div>
+  </div>
+
+  <!-- Bootstrap JS and jQuery -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const appointmentLinks = document.querySelectorAll('.book-appointment');
+      appointmentLinks.forEach(function(link) {
+        link.addEventListener('click', function(event) {
+          event.preventDefault();
+          alert('Appointment booked successfully!');
+        });
+      });
+    });
+  </script>
+</body>
+</html>

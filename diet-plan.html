@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Diet Plan</title>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <!-- Custom CSS -->
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-image: url('im3.jpg');
+    }
+    .container {
+      max-width: 800px;
+      margin: 50px auto;
+    }
+    .recipe {
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  
+  <div class="container">
+    <h1>Diet Plan</h1>
+    <p>Choose a suggestion for your diet:</p>
+    <div class="btn-group" role="group">
+      <button type="button" class="btn btn-primary" onclick="showRecipe('Protein')">Protein</button>
+      <button type="button" class="btn btn-primary" onclick="showRecipe('Carbohydrate')">Carbohydrate</button>
+      <button type="button" class="btn btn-primary" onclick="showRecipe('Healthy Fats')">Healthy Fats</button>
+      <button type="button" class="btn btn-primary" onclick="showRecipe('Balanced Food')">Balanced Food</button>
+      <button type="button" class="btn btn-primary" onclick="showRecipe('Body Type')">According to Body Types</button>
+    </div>
+    <div id="recipeSection" class="recipe" style="display: none;">
+      <h2>Recipe</h2>
+      <p id="recipeContent"></p>
+    </div>
+  </div>
+
+  <!-- Bootstrap JS and jQuery -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <!-- Custom JavaScript -->
+  <script>
+    // Function to show recipe based on the selected suggestion
+    function showRecipe(suggestion) {
+      var recipeContent = document.getElementById("recipeContent");
+      // You can add more recipes or fetch recipes from a database here
+      switch (suggestion) {
+        case "Protein":
+          recipeContent.innerHTML = "Protein-rich recipe: Grilled chicken with steamed vegetables.<br>Grilled chicken with steamed vegetables."
+
+          break;
+        case "Carbohydrate":
+          recipeContent.innerHTML = "Carbohydrate-rich recipe: Whole wheat pasta with tomato sauce.";
+          break;
+        case "Healthy Fats":
+          recipeContent.innerHTML = "Healthy fats recipe: Avocado toast with poached eggs.";
+          break;
+        case "Balanced Food":
+          recipeContent.innerHTML = "Balanced food recipe: Quinoa salad with mixed greens and grilled salmon.";
+          break;
+        case "Body Type":
+          recipeContent.innerHTML = "Recipe according to body types: Consult a nutritionist for personalized recommendations.";
+          break;
+        default:
+          recipeContent.innerHTML = "No recipe available.";
+      }
+      document.getElementById("recipeSection").style.display = "block";
+    }
+  </script>
+</body>
+</html>
